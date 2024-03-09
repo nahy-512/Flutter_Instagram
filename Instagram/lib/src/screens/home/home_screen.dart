@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/image_avatar.dart';
 import '../../widgets/image_data.dart';
+import '../../widgets/story_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -28,6 +30,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
+      body: _storyView()
     );
   }
 
@@ -45,6 +48,21 @@ class HomeScreen extends StatelessWidget {
           width: 44,
         ),
       ],
+    );
+  }
+
+  Widget _storyView() {
+    return SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            const Story(type: AvatarValue.storyMy),
+            ...List.generate(
+              10,
+                  (index) => const Story(type: AvatarValue.storyDefault),
+            ),
+          ],
+        )
     );
   }
 }

@@ -31,6 +31,7 @@ class IconsPath {
   static String basePath = 'assets/images';
 
   static String get myProfileUrl => 'https://cdn.discordapp.com/attachments/1124558739211558993/1215771754308571146/autumncocoa.jpg?ex=65fdf6ae&is=65eb81ae&hm=e9177ec52036f9a2e405d0bb2583d31486f6a621a451feac4a424a9ad5a6584d&';
+  static String get otherProfileUrl => 'https://github.com/nahy-512/nahy-512/assets/101113025/3fb8e968-e482-4aff-9334-60c41014a80f';
   // Bottom Nav Icon
   static String get homeOff => '$basePath/ic_home_unselected.svg';
   static String get homeOn => '$basePath/ic_home_selected.svg';
@@ -46,4 +47,5 @@ class IconsPath {
   static String get logo => '$basePath/logo_text.svg';
   static String get alert => '$basePath/ic_heart.svg';
   static String get dm => '$basePath/ic_share.svg';
+  static String get addStory => '$basePath/ic_add_story.svg';
 }

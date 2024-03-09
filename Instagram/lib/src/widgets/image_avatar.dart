@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:instagram/src/widgets/image_data.dart';
 
 enum AvatarType { bottom, story }
-enum BorderType { none, color, gradient }
+enum BorderType { none, color, gradient, my }
 enum AvatarValue {
   bottomOn(AvatarType.bottom, BorderType.color),
   bottomOff(AvatarType.bottom, BorderType.none),
-  storyDefault(AvatarType.story, BorderType.gradient);
+  storyDefault(AvatarType.story, BorderType.gradient),
+  storyMy(AvatarType.story, BorderType.none);
 
   const AvatarValue(this.avatarType, this.borderType);
   final AvatarType avatarType;
@@ -21,20 +23,21 @@ class ImageAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = findImageWidthByType(type.avatarType);
     switch (type) {
       case AvatarValue.bottomOff:
-        return _noneBolderImage(width);
+        return _noneBolderImage();
       case AvatarValue.bottomOn:
         return _colorBolderImage(type.avatarType);
       case AvatarValue.storyDefault:
         return _gradientBolderImage();
+      case AvatarValue.storyMy:
+        return _myStoryImage();
     }
   }
 
-  Widget _noneBolderImage(double width) {
+  Widget _noneBolderImage() {
     return SizedBox(
-      width: width,
+      width: _setImageWidthByType(type.avatarType),
       child: CircleAvatar(
         child: _baseImageContainer()
       ),
@@ -43,8 +46,33 @@ class ImageAvatar extends StatelessWidget {
 
   Widget _colorBolderImage(AvatarType type) {
     return SizedBox(
-      width: findImageWidthByType(type),
+      width: _setImageWidthByType(type),
       child: CircleAvatar(child: _baseImageContainerWithBorder(type))
+    );
+  }
+
+  Widget _myStoryImage() {
+    return Padding(
+      padding: const EdgeInsets.all(3.5),
+      child: Stack(
+        children: [
+          _basicImage(),
+          Positioned(
+            // 위치 변경
+            bottom: 0.5, // 하단부
+            right: 0.5,	 // 우측
+            child: Container(
+              padding: const EdgeInsets.all(3.0),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: Colors.white),
+              child: ImageData(
+                path: IconsPath.addStory,
+                width: 60,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -67,7 +95,7 @@ class ImageAvatar extends StatelessWidget {
   }
 
   Widget _basicImage() {
-    double width = findImageWidthByType(type.avatarType);
+    double width = _setImageWidthByType(type.avatarType);
     return ClipRRect(
       borderRadius: BorderRadius.circular(100),
       child: SizedBox(
@@ -86,7 +114,7 @@ class ImageAvatar extends StatelessWidget {
       padding: const EdgeInsets.all(1.0),
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(50.0)
+          borderRadius: BorderRadius.circular(100.0)
       ),
       child: _basicImage(),
     );
@@ -98,12 +126,12 @@ class ImageAvatar extends StatelessWidget {
     return Container(
         padding: EdgeInsets.all(borderWidth),
         decoration: BoxDecoration(
-            color: borderColor, borderRadius: BorderRadius.circular(50.0)),
+            color: borderColor, borderRadius: BorderRadius.circular(100.0)),
         child: _baseImageContainer(),
     );
   }
 
-  double findImageWidthByType(AvatarType type) {
+  double _setImageWidthByType(AvatarType type) {
     return (type == AvatarType.bottom) ? 80 / Get.mediaQuery.devicePixelRatio : Get.size.width * 0.2;
   }
 
