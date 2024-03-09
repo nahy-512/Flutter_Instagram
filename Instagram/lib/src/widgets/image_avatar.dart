@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-enum AvatarType { ON, OFF }
+enum AvatarType { bottom, story }
+enum BorderType { none, color, gradient }
+enum AvatarValue {
+  bottomOn(AvatarType.bottom, BorderType.color),
+  bottomOff(AvatarType.bottom, BorderType.none),
+  storyDefault(AvatarType.story, BorderType.color);
+
+  const AvatarValue(this.avatarType, this.borderType);
+  final AvatarType avatarType;
+  final BorderType borderType;
+}
 
 class ImageAvatar extends StatelessWidget {
   final double width;
   final String url;
-  final AvatarType type;
+  final AvatarValue type;
   const ImageAvatar(
       {super.key, this.width = 80, required this.url, required this.type});
 
   @override
   Widget build(BuildContext context) {
     switch (type) {
-      case AvatarType.ON:
+      case AvatarValue.bottomOn:
         return _bottomProfileOnImage();
-      case AvatarType.OFF:
+      case AvatarValue.bottomOff:
         return _bottomProfileOffImage();
+      case AvatarValue.storyDefault:
+        return _baseImageContainer();
     }
   }
 

@@ -57,11 +57,11 @@ class App extends GetView<BottomNavigationController> {
             label: 'reels'),
         const BottomNavigationBarItem(
             icon: ImageAvatar(
-              type: AvatarType.OFF,
+              type: AvatarValue.bottomOff,
               url: imageUrl,
             ),
             activeIcon: ImageAvatar(
-              type: AvatarType.ON,
+              type: AvatarValue.bottomOn,
               url: imageUrl,
             ),
             label: 'profile'),
