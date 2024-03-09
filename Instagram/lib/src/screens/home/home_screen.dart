@@ -10,27 +10,31 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        //로고
-        title: _appBarLogo(),
-        actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ImageData(path: IconsPath.alert),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ImageData(path: IconsPath.dm),
-            ),
-          ),
-        ],
-      ),
+      appBar: _appBar(),
       body: _storyView()
+    );
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      //로고
+      title: _appBarLogo(),
+      actions: [
+        GestureDetector(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ImageData(path: IconsPath.alert),
+          ),
+        ),
+        GestureDetector(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: ImageData(path: IconsPath.dm),
+          ),
+        ),
+      ],
     );
   }
 
