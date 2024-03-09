@@ -19,9 +19,6 @@ class App extends GetView<BottomNavigationController> {
           () => WillPopScope(
         onWillPop: controller.popAction,
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text('App Bar'),
-          ),
           body: _body(),
           bottomNavigationBar: _bottomNavigationBar(),
         ),
