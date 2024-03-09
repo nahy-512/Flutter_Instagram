@@ -28,8 +28,6 @@ class App extends GetView<BottomNavigationController> {
 
   Widget _bottomNavigationBar() {
 
-    const String imageUrl = 'https://cdn.discordapp.com/attachments/1124558739211558993/1215771754308571146/autumncocoa.jpg?ex=65fdf6ae&is=65eb81ae&hm=e9177ec52036f9a2e405d0bb2583d31486f6a621a451feac4a424a9ad5a6584d&';
-
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       elevation: 0.0,
@@ -55,14 +53,14 @@ class App extends GetView<BottomNavigationController> {
             icon: ImageData(path: IconsPath.reelsOff),
             activeIcon: ImageData(path: IconsPath.reelsOn),
             label: 'reels'),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
             icon: ImageAvatar(
               type: AvatarValue.bottomOff,
-              url: imageUrl,
+              url: IconsPath.myProfileUrl,
             ),
             activeIcon: ImageAvatar(
               type: AvatarValue.bottomOn,
-              url: imageUrl,
+              url: IconsPath.myProfileUrl,
             ),
             label: 'profile'),
       ],
