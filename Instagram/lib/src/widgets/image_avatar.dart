@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 enum AvatarType { ON, OFF }
 
@@ -15,43 +14,25 @@ class ImageAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (type) {
       case AvatarType.ON:
-        return _onImage();
+        return _bottomProfileOnImage();
       case AvatarType.OFF:
-        return _offImage();
+        return _bottomProfileOffImage();
     }
   }
 
-  Widget _offImage() {
+  Widget _bottomProfileOffImage() {
     return SizedBox(
       width: width / Get.mediaQuery.devicePixelRatio,
       child: CircleAvatar(
-        child: Container(
-          padding: const EdgeInsets.all(2.0),
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(100.0)),
-          child: _basicImage(),
-        ),
+        child: _baseImageContainer()
       ),
     );
   }
 
-  Widget _onImage() {
+  Widget _bottomProfileOnImage() {
     return SizedBox(
       width: width / Get.mediaQuery.devicePixelRatio,
-      child: CircleAvatar(
-        child: Container(
-          padding: const EdgeInsets.all(1.0),
-          decoration: BoxDecoration(
-              color: Colors.black, borderRadius: BorderRadius.circular(100.0)),
-          child: Container(
-            padding: const EdgeInsets.all(1.0),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(100.0)),
-            child: _basicImage(),
-          ),
-        ),
-      ),
+      child: CircleAvatar(child: _baseImageContainerWithBorder(Colors.black))
     );
   }
 
@@ -62,6 +43,25 @@ class ImageAvatar extends StatelessWidget {
         url,
         fit: BoxFit.contain,
       ),
+    );
+  }
+
+  Widget _baseImageContainer() {
+    return Container(
+      padding: const EdgeInsets.all(1.0),
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(100.0)),
+      child: _basicImage(),
+    );
+  }
+
+  Widget _baseImageContainerWithBorder(Color borderColor) {
+    return Container(
+        padding: const EdgeInsets.all(1.0),
+        decoration: BoxDecoration(
+            color: Colors.black, borderRadius: BorderRadius.circular(100.0)),
+        child: _baseImageContainer(),
     );
   }
 }
