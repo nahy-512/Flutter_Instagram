@@ -111,7 +111,7 @@ class Feed extends StatelessWidget {
               text: const TextSpan(
                 text: '좋아요 ',
                 style: TextStyle(
-                    fontSize: 12, color: Colors.black
+                    fontSize: 13, color: Colors.black
                 ),
                 children: [
                   TextSpan(
@@ -125,7 +125,7 @@ class Feed extends StatelessWidget {
             RichText(
               text: const TextSpan(
                 text: 'mongi  ',
-                style: TextStyle(fontSize: 12, color: Colors.black, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.bold),
                 children: [
                   TextSpan(
                     text: "부산 여행을 갔다. 여름이었ㄸr...",
@@ -137,10 +137,17 @@ class Feed extends StatelessWidget {
             const SizedBox(height: 4,),
             Text("댓글 46개 모두 보기",
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 13,
                 color: Colors.black45
               ),
-            )
+            ),
+            const SizedBox(height: 4,),
+            Text("1월 25일",
+              style: TextStyle(
+                  fontSize: 11,
+                  color: Colors.black45
+              ),
+            ),
           ],
         ),
       ),

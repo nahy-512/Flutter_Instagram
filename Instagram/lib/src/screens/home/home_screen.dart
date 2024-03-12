@@ -17,13 +17,7 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           _appBar(),
           _storyView(),
-          SliverToBoxAdapter(
-            child: SizedBox(height: 1300,
-              child: Container(
-                color: Colors.lightBlueAccent,
-              ),
-            ),
-          ),
+          _feedView()
         ]
       ),
     );
@@ -85,6 +79,21 @@ class HomeScreen extends StatelessWidget {
           width: 44,
         ),
       ],
+    );
+  }
+
+  Widget _feedView() {
+    return SliverToBoxAdapter(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Row(
+          children: [
+            ...List.generate(1,
+                  (index) => Feed(userName: "mongi"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
