@@ -15,9 +15,8 @@ class Story extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return SizedBox(
-      height: 144,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -48,7 +47,7 @@ class Story extends StatelessWidget {
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 12,
-          color: Colors.black87,
+          color: Colors.black54,
         ),
       );
     } else {

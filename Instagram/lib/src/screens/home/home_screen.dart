@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/feed_widget.dart';
 import '../../widgets/image_avatar.dart';
 import '../../widgets/image_data.dart';
 import '../../widgets/story_widget.dart';
@@ -10,31 +11,63 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _appBar(),
-      body: _storyView()
+      body: CustomScrollView(
+        reverse: false,
+        scrollDirection: Axis.vertical,
+        slivers: [
+          _appBar(),
+          _storyView(),
+          SliverToBoxAdapter(
+            child: SizedBox(height: 1300,
+              child: Container(
+                color: Colors.lightBlueAccent,
+              ),
+            ),
+          ),
+        ]
+      ),
     );
   }
 
-  AppBar _appBar() {
-    return AppBar(
-      //로고
-      title: _appBarLogo(),
+  Widget _appBar() {
+    return SliverAppBar(
+      floating: true,
+      // snap: true,
+      expandedHeight: 50,
+      title: _appBarLogo(), //로고
       actions: [
         GestureDetector(
           onTap: () {},
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(16.0),
             child: ImageData(path: IconsPath.alert),
           ),
         ),
         GestureDetector(
           onTap: () {},
           child: Padding(
-            padding: const EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(16.0),
             child: ImageData(path: IconsPath.dm),
           ),
         ),
       ],
+    );
+  }
+
+  Widget _storyView() {
+    return SliverToBoxAdapter(
+      child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              const Story(type: AvatarValue.storyMy),
+              ...List.generate(
+                6,
+                    (index) => const Story(type: AvatarValue.storyDefault),
+              ),
+            ],
+          ),
+      ),
     );
   }
 
@@ -52,21 +85,6 @@ class HomeScreen extends StatelessWidget {
           width: 44,
         ),
       ],
-    );
-  }
-
-  Widget _storyView() {
-    return SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            const Story(type: AvatarValue.storyMy),
-            ...List.generate(
-              10,
-                  (index) => const Story(type: AvatarValue.storyDefault),
-            ),
-          ],
-        )
     );
   }
 }
