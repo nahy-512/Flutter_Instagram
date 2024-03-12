@@ -36,7 +36,8 @@ class Feed extends StatelessWidget {
             children: [
               ImageAvatar( // 프로필 사진
                 url: IconsPath.mongiProfileUrl,
-                type: AvatarValue.bottomOff,
+                avatarType: AvatarType.feed,
+                borderType: BorderType.none,
               ),
               const SizedBox(width: 8,),
               Text( // 계정 이름

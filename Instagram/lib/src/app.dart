@@ -55,12 +55,14 @@ class App extends GetView<BottomNavigationController> {
             label: 'reels'),
         BottomNavigationBarItem(
             icon: ImageAvatar(
-              type: AvatarValue.bottomOff,
               url: IconsPath.myProfileUrl,
+              avatarType: AvatarType.bottom,
+              borderType: BorderType.none,
             ),
             activeIcon: ImageAvatar(
-              type: AvatarValue.bottomOn,
               url: IconsPath.myProfileUrl,
+              avatarType: AvatarType.bottom,
+              borderType: BorderType.color,
             ),
             label: 'profile'),
       ],

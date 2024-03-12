@@ -19,12 +19,6 @@ class ImageData extends StatelessWidget {
       width: width! / Get.mediaQuery.devicePixelRatio,
     );
   }
-  /*
-  icon: SvgPicture.asset(
-    'assets/icons/ic_seal.svg',
-    color: Colors.blueAccent,
-  ),
-   */
 }
 
 class IconsPath {

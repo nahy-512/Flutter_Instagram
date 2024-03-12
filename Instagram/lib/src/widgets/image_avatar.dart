@@ -1,68 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:instagram/src/widgets/image_data.dart';
 
-enum AvatarType { bottom, story }
-enum BorderType { none, color, gradient, my }
-enum AvatarValue {
-  bottomOn(AvatarType.bottom, BorderType.color),
-  bottomOff(AvatarType.bottom, BorderType.none),
-  storyDefault(AvatarType.story, BorderType.gradient),
-  storyMy(AvatarType.story, BorderType.none);
+enum AvatarType {
+  bottom(24, 0.5, 1),
+  story(78, 2, 2.5),
+  feed(32, 1, 1.5);
 
-  const AvatarValue(this.avatarType, this.borderType);
-  final AvatarType avatarType;
-  final BorderType borderType;
+  const AvatarType(this.imageWidth, this.interval, this.borderWidth);
+  final double imageWidth; // 이미지 크기
+  final double interval; // 이미지-테두리 간격
+  final double borderWidth; // 테두리 크기
 }
+
+enum BorderType { none, color, gradient, my }
 
 class ImageAvatar extends StatelessWidget {
   final String url;
-  final AvatarValue type;
+  final AvatarType avatarType;
+  final BorderType borderType;
   const ImageAvatar(
-      {super.key, required this.url, required this.type});
+      {super.key, required this.url, required this.avatarType, required this.borderType});
 
   @override
   Widget build(BuildContext context) {
-    switch (type) {
-      case AvatarValue.bottomOff:
+    switch (borderType) {
+      case BorderType.none:
         return _noneBolderImage();
-      case AvatarValue.bottomOn:
-        return _colorBolderImage(type.avatarType);
-      case AvatarValue.storyDefault:
+      case BorderType.color:
+        return _colorBolderImage();
+      case BorderType.gradient:
         return _gradientBolderImage();
-      case AvatarValue.storyMy:
-        return _myStoryImage();
+      case BorderType.my:
+        return _myImage();
     }
   }
 
   Widget _noneBolderImage() {
-    return SizedBox(
-      width: _setImageWidthByType(type.avatarType),
-      child: CircleAvatar(
-        child: _baseImageContainer()
-      ),
+    return Container(
+      padding: EdgeInsets.all(avatarType.borderWidth),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100.0)),
+      child: _baseImageContainer(),
     );
   }
 
-  Widget _colorBolderImage(AvatarType type) {
-    return SizedBox(
-      width: _setImageWidthByType(type),
-      child: CircleAvatar(child: _baseImageContainerWithBorder(type))
+  Widget _colorBolderImage() {
+    Color borderColor = (avatarType == AvatarType.bottom) ? Colors.black : Colors.greenAccent;
+    return Container(
+      padding: EdgeInsets.all(avatarType.borderWidth),
+      decoration: BoxDecoration(
+          color: borderColor,
+          borderRadius: BorderRadius.circular(100.0)),
+      child: _baseImageContainer(),
     );
   }
 
-  Widget _myStoryImage() {
+  Widget _myImage() {
     return Padding(
       padding: const EdgeInsets.all(3.5),
-      child: Stack(
+      child: Stack( // 이미지가 겹칠 수 있도록 해줌
         children: [
-          _basicImage(),
+          _baseImageContainer(),
           Positioned(
             // 위치 변경
             bottom: 0.5, // 하단부
             right: 0.5,	 // 우측
-            child: Container(
-              padding: const EdgeInsets.all(3.0),
+            child: Container( // + 버튼
+              padding: EdgeInsets.all(avatarType.interval + 1),
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.white),
               child: ImageData(
@@ -77,41 +81,21 @@ class ImageAvatar extends StatelessWidget {
   }
 
   Widget _gradientBolderImage() {
-    return Container(
-        padding: const EdgeInsets.all(3.5),
+    return Container( // 테두리
+        padding: EdgeInsets.all(avatarType.borderWidth),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
             // 스토리 영역의 테두리를
             // 그라데이션으로 줄 수 있음.
             gradient: _defaultGradient(),
         ),
-        child: Container(
-            padding: const EdgeInsets.all(2.0),
-            decoration: const BoxDecoration(
-                shape: BoxShape.circle, color: Colors.white),
-            child: _basicImage(),
-        ),
-    );
-  }
-
-  Widget _basicImage() {
-    double width = _setImageWidthByType(type.avatarType);
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(100),
-      child: SizedBox(
-        width: width,
-        height: width,
-        child: Image.network(
-          url,
-          fit: BoxFit.cover,
-        ),
-      ),
+        child: _baseImageContainer()
     );
   }
 
   Widget _baseImageContainer() {
     return Container(
-      padding: const EdgeInsets.all(1.0),
+      padding: EdgeInsets.all(avatarType.interval), // 테두리와의 간격
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(100.0)
@@ -120,19 +104,18 @@ class ImageAvatar extends StatelessWidget {
     );
   }
 
-  Widget _baseImageContainerWithBorder(AvatarType type) {
-    Color borderColor = (type == AvatarType.bottom) ? Colors.black : Colors.greenAccent;
-    double borderWidth = (type == AvatarType.bottom) ? 1 : 2;
-    return Container(
-        padding: EdgeInsets.all(borderWidth),
-        decoration: BoxDecoration(
-            color: borderColor, borderRadius: BorderRadius.circular(100.0)),
-        child: _baseImageContainer(),
+  Widget _basicImage() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(100),
+      child: SizedBox(
+        width: avatarType.imageWidth,
+        height: avatarType.imageWidth,
+        child: Image.network(
+          url,
+          fit: BoxFit.cover,
+        ),
+      ),
     );
-  }
-
-  double _setImageWidthByType(AvatarType type) {
-    return (type == AvatarType.bottom) ? 80 / Get.mediaQuery.devicePixelRatio : Get.size.width * 0.2;
   }
 
   Gradient _defaultGradient() {

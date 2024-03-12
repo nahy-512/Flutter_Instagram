@@ -5,10 +5,10 @@ import 'image_data.dart';
 
 class Story extends StatelessWidget {
 
-  final AvatarValue type;
+  final BorderType borderType;
 
   const Story({super.key,
-    required this.type
+    required this.borderType
   });
 
   @override
@@ -16,12 +16,13 @@ class Story extends StatelessWidget {
 
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ImageAvatar(
-              type: type,
+              avatarType: AvatarType.story,
+              borderType: borderType,
               url: _setProfileImageUrl(),
             ),
             const SizedBox(height: 8,),
@@ -33,7 +34,7 @@ class Story extends StatelessWidget {
   }
 
   String _setProfileImageUrl() {
-    if (type == AvatarValue.storyMy) {
+    if (borderType == BorderType.my) {
       return IconsPath.myProfileUrl;
     } else {
       return IconsPath.otherProfileUrl;
@@ -41,7 +42,7 @@ class Story extends StatelessWidget {
   }
 
   Widget _setText() {
-    if (type == AvatarValue.storyMy) {
+    if (borderType == BorderType.my) {
       return const Text(
         '내 스토리',
         textAlign: TextAlign.center,

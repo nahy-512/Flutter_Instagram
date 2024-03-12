@@ -29,16 +29,18 @@ class HomeScreen extends StatelessWidget {
       floating: true,
       // snap: true,
       expandedHeight: 50,
-      title: _appBarLogo(), //로고
+      elevation: 0.4,
+      shadowColor: Colors.black12,
+      title: _appBarLogo(), // 로고
       actions: [
-        GestureDetector(
+        GestureDetector( // 알림
           onTap: () {},
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: ImageData(path: IconsPath.alert),
           ),
         ),
-        GestureDetector(
+        GestureDetector( // DM
           onTap: () {},
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -55,10 +57,11 @@ class HomeScreen extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              const Story(type: AvatarValue.storyMy),
-              ...List.generate(
+              const Story(borderType: BorderType.my), // 내 스토리
+              const SizedBox(width: 4,),
+              ...List.generate( // 팔로잉 스토리
                 6,
-                    (index) => const Story(type: AvatarValue.storyDefault),
+                    (index) => const Story(borderType: BorderType.gradient),
               ),
             ],
           ),
@@ -69,8 +72,8 @@ class HomeScreen extends StatelessWidget {
   Widget _divider() {
     return const SliverToBoxAdapter(
       child: Divider(
-        height: 0.5,
-        color: Colors.black38,
+        height: 0.4,
+        color: Colors.black12,
       ),
     );
   }
