@@ -13,17 +13,14 @@ class Feed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
-      child: SizedBox(
-        child: Column(
-          children: [
-            _header(),
-            _image(),
-            _buttons(),
-            _body()
-          ],
-        ),
+    return SizedBox(
+      child: Column(
+        children: [
+          _header(),
+          _image(),
+          _buttons(),
+          _body()
+        ],
       ),
     );
   }

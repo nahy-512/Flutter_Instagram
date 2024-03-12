@@ -65,6 +65,26 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
+  Widget _feedView() {
+    return SliverToBoxAdapter(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            ...List.generate(4,
+                  (index) => Column(
+                    children: [
+                      Feed(userName: "mongi"),
+                      const SizedBox(height: 14,)
+                    ],
+                  )
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _appBarLogo() {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,21 +99,6 @@ class HomeScreen extends StatelessWidget {
           width: 44,
         ),
       ],
-    );
-  }
-
-  Widget _feedView() {
-    return SliverToBoxAdapter(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Row(
-          children: [
-            ...List.generate(1,
-                  (index) => Feed(userName: "mongi"),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
