@@ -16,7 +16,7 @@ class Story extends StatelessWidget {
 
     return SizedBox(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           _appBar(),
           _storyView(),
+          _divider(),
           _feedView()
         ]
       ),
@@ -61,6 +62,15 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
+      ),
+    );
+  }
+
+  Widget _divider() {
+    return const SliverToBoxAdapter(
+      child: Divider(
+        height: 0.5,
+        color: Colors.black38,
       ),
     );
   }
