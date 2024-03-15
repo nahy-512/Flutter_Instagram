@@ -62,8 +62,9 @@ class App extends GetView<BottomNavigationController> {
             activeIcon: ImageAvatar(
               url: IconsPath.myProfileUrl,
               avatarType: AvatarType.bottom,
-              borderType: BorderType.color,
-              label: 'profile'),
+              borderType: BorderType.color
+            ),
+            label: 'reels')
       ],
     );
   }
