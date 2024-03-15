@@ -19,9 +19,6 @@ class App extends GetView<BottomNavigationController> {
           () => WillPopScope(
         onWillPop: controller.popAction,
         child: Scaffold(
-          appBar: AppBar(
-            title: const Text('App Bar'),
-          ),
           body: _body(),
           bottomNavigationBar: _bottomNavigationBar(),
         ),
@@ -30,8 +27,6 @@ class App extends GetView<BottomNavigationController> {
   }
 
   Widget _bottomNavigationBar() {
-
-    const String imageUrl = 'https://cdn.discordapp.com/attachments/1124558739211558993/1215771754308571146/autumncocoa.jpg?ex=65fdf6ae&is=65eb81ae&hm=e9177ec52036f9a2e405d0bb2583d31486f6a621a451feac4a424a9ad5a6584d&';
 
     return BottomNavigationBar(
       backgroundColor: Colors.white,
@@ -58,16 +53,17 @@ class App extends GetView<BottomNavigationController> {
             icon: ImageData(path: IconsPath.reelsOff),
             activeIcon: ImageData(path: IconsPath.reelsOn),
             label: 'reels'),
-        const BottomNavigationBarItem(
+        BottomNavigationBarItem(
             icon: ImageAvatar(
-              type: AvatarType.OFF,
-              url: imageUrl,
+              url: IconsPath.myProfileUrl,
+              avatarType: AvatarType.bottom,
+              borderType: BorderType.none,
             ),
             activeIcon: ImageAvatar(
-              type: AvatarType.ON,
-              url: imageUrl,
-            ),
-            label: 'profile'),
+              url: IconsPath.myProfileUrl,
+              avatarType: AvatarType.bottom,
+              borderType: BorderType.color,
+              label: 'profile'),
       ],
     );
   }
