@@ -63,8 +63,7 @@ class App extends GetView<BottomNavigationController> {
               url: IconsPath.myProfileUrl,
               avatarType: AvatarType.bottom,
               borderType: BorderType.color,
-            ),
-            label: 'profile'),
+              label: 'profile'),
       ],
     );
   }

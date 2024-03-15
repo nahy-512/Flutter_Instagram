@@ -101,7 +101,7 @@ class ImageAvatar extends StatelessWidget {
           borderRadius: BorderRadius.circular(100.0)
       ),
       child: _basicImage(),
-    );
+      );
   }
 
   Widget _basicImage() {
