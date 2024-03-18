@@ -14,10 +14,17 @@ class ImageData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      path,
-      width: width! / Get.mediaQuery.devicePixelRatio,
-    );
+    if (path.contains('svg')) { // SVG
+      return SvgPicture.asset(
+        path,
+        width: width! / Get.mediaQuery.devicePixelRatio,
+      );
+    } else { // PNG, ..
+      return Image.asset(
+        path,
+        width: width! / Get.mediaQuery.devicePixelRatio,
+      );
+    }
   }
 }
 
@@ -38,6 +45,9 @@ class IconsPath {
   static String get reelsOn => '$basePath/ic_reels_selected.svg';
   // Common
   static String get arrowDown => '$basePath/ic_arrow_down.svg';
+  // Login
+  static String get appIcon => '$basePath/ic_logo_transparent.svg';
+  static String get metaLogo => '$basePath/ic_logo_meta.png';
   // Home
   static String get logo => '$basePath/logo_text.svg';
   static String get alert => '$basePath/ic_heart.svg';

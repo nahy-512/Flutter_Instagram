@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:instagram/src/bindings/init_binding.dart';
+import 'package:instagram/src/screens/login/login_screen.dart';
 
 import 'src/app.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           appBarTheme: const AppBarTheme(
               foregroundColor: Colors.black, backgroundColor: Colors.white)),
-      home: const App(),
+      home: const LoginScreen(),
       initialBinding: InitBinding(), //초기 바인딩
     );
   }
