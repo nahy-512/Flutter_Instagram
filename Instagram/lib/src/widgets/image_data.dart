@@ -48,6 +48,9 @@ class IconsPath {
   // Login
   static String get appIcon => '$basePath/ic_logo_transparent.svg';
   static String get metaLogo => '$basePath/ic_logo_meta.png';
+  static String get pwdOff => '$basePath/ic_pwd_invisible.png';
+  static String get pwdOn => '$basePath/ic_pwd_visible.png';
+  static String get facebook => '$basePath/ic_facebook.png';
   // Home
   static String get logo => '$basePath/logo_text.svg';
   static String get alert => '$basePath/ic_heart.svg';
