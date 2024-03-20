@@ -13,7 +13,9 @@ class LoginScreen2 extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen2> {
-  TextEditingController passwordController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  bool _isButtonEnabled = false;
   final Color textColor = const Color(0xFF0095F6);
 
   @override
@@ -64,11 +66,22 @@ class _LoginScreenState extends State<LoginScreen2> {
   }
 
   Widget _nameTextField() {
-    return const DefaultTextField2(hintText: '전화번호, 사용자 이름 또는 이메일');
+    return DefaultTextField2(
+        controller: _nameController,
+        hintText: '전화번호, 사용자 이름 또는 이메일',
+        onChanged: (value) {
+          _updateButtonState();
+        },
+    );
   }
 
   Widget _pwdTextField() {
-    return PasswordTextField2(controller: passwordController,);
+    return PasswordTextField2(
+      controller: _passwordController,
+      onChanged: (value) {
+        _updateButtonState();
+      },
+    );
   }
 
   Widget _forgetPwdText() {
@@ -89,7 +102,15 @@ class _LoginScreenState extends State<LoginScreen2> {
   }
 
   Widget _loginButton() {
-    return const ButtonWidget2(title: "로그인");
+    return ButtonWidget2(title: "로그인", isValid: _isButtonEnabled,);
+  }
+
+  void _updateButtonState() {
+    setState(() {
+      // TextField의 값이 비어있지 않으면 버튼 활성화
+      _isButtonEnabled = _nameController.text.isNotEmpty &&
+          _passwordController.text.isNotEmpty;
+    });
   }
 
   Widget _orSeparator() {

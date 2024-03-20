@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:instagram/src/widgets/image_data.dart';
 
 class PasswordTextField2 extends StatefulWidget {
-  final String labelText;
+  final String hintText;
   final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
+
 
   const PasswordTextField2({super.key,
     required this.controller,
-    this.labelText = "비밀번호"
+    this.hintText = "비밀번호",
+    this.onChanged
   });
 
   @override
@@ -29,13 +32,14 @@ class _PasswordTextFieldState extends State<PasswordTextField2> {
     return Center(
       child: TextField(
         controller: widget.controller,
+        onChanged: widget.onChanged, // 외부에서 전달된 onChanged 콜백 사용
         obscureText: _passwordHide,
         cursorColor: Colors.black54,
         decoration: InputDecoration(
           filled: true,
           fillColor: const Color(0xFFFAFAFA),
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
-          hintText: widget.labelText,
+          hintText: widget.hintText,
           hintStyle: const TextStyle(
               color: Colors.black45,
               fontSize: 14,

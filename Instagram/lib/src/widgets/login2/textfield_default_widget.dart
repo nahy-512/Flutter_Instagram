@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
 
-class DefaultTextField2 extends StatelessWidget {
+class DefaultTextField2 extends StatefulWidget {
   final String hintText;
+  final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
 
   const DefaultTextField2({super.key,
-    required this.hintText
+    required this.controller,
+    required this.hintText,
+    this.onChanged
   });
+
+  @override
+  State<DefaultTextField2> createState() => _DefaultTextField2State();
+}
+
+class _DefaultTextField2State extends State<DefaultTextField2> {
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: TextField(
+        controller: widget.controller,
+        onChanged: widget.onChanged, // 외부에서 전달된 onChanged 콜백 사용
         cursorColor: Colors.black54,
         decoration: InputDecoration(
           filled: true,
           fillColor: const Color(0xFFFAFAFA),
           contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: -4),
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: const TextStyle(
               color: Colors.black45,
               fontSize: 14,
@@ -34,4 +46,5 @@ class DefaultTextField2 extends StatelessWidget {
     );
   }
 
+  String get textValue => widget.controller.text;
 }
