@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/src/screens/login/signup_name_screen.dart';
 import 'package:instagram/src/widgets/login2/button_widget.dart';
 import 'package:instagram/src/widgets/login2/textfield_default_widget.dart';
 import 'package:instagram/src/widgets/login2/textfield_password_widget.dart';
@@ -167,21 +168,34 @@ class _LoginScreenState extends State<LoginScreen2> {
       children: [
         Container(height: 0.2, color: Colors.grey,),
         const SizedBox(height: 30,),
-        RichText(
-          text: TextSpan(
-            text: '계정이 없으신가요? ',
-            style: const TextStyle(
-                fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w400
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('계정이 없으신가요?',
+              style: TextStyle(
+                  fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w300
+              ),
             ),
-            children: [
-              TextSpan(
-                text: "가입하기",
+            const SizedBox(width: 4,),
+            // 회원가입 화면으로 이동
+            GestureDetector(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const SignupNameScreen(),
+                    fullscreenDialog: false,
+                  ),
+                );
+              },
+              child: Text('가입하기',
                 style: TextStyle(
                     fontSize: 12, color: textColor, fontWeight: FontWeight.w500
                 ),
               ),
-            ],
-          ),
+            )
+          ],
         ),
       ],
     );

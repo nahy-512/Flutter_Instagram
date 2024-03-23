@@ -25,7 +25,7 @@ class ButtonWidget2 extends StatelessWidget {
           backgroundColor: isValid ? activateColor : inActivateColor,
           padding: const EdgeInsets.symmetric(vertical: 12),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(8.0),
           ),
         ),
         child: Text(

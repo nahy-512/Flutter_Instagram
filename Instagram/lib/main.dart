@@ -3,6 +3,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:instagram/src/bindings/init_binding.dart';
 import 'package:instagram/src/screens/login/login2_screen.dart';
 import 'package:instagram/src/screens/login/login_screen.dart';
+import 'package:instagram/src/screens/login/signup_name_screen.dart';
 
 import 'src/app.dart';
 
