@@ -31,7 +31,7 @@ class ImageData extends StatelessWidget {
 class IconsPath {
   static String basePath = 'assets/images';
 
-  static String get myProfileUrl => 'https://cdn.discordapp.com/attachments/1124558739211558993/1215771754308571146/autumncocoa.jpg?ex=65fdf6ae&is=65eb81ae&hm=e9177ec52036f9a2e405d0bb2583d31486f6a621a451feac4a424a9ad5a6584d&';
+  static String get myProfileUrl => 'https://github.com/nahy-512/Flutter_Instagram/assets/101113025/5fee343c-c7fa-45ee-838c-4d3022da2fcd';
   static String get otherProfileUrl => 'https://github.com/nahy-512/nahy-512/assets/101113025/3fb8e968-e482-4aff-9334-60c41014a80f';
   static String get mongiProfileUrl => 'https://github.com/nahy-512/nahy-512/assets/101113025/f16fcb86-dba3-46ca-9bf4-b6475db9305b';
   // Bottom Nav Icon

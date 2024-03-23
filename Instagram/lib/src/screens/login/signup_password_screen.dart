@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instagram/src/screens/login/signup_finish_screen.dart';
 import 'package:instagram/src/widgets/login2/textfield_password_widget.dart';
 
 import '../../widgets/login2/button_widget.dart';
@@ -7,10 +8,10 @@ class SignupPasswordScreen extends StatefulWidget {
   const SignupPasswordScreen({super.key});
 
   @override
-  State<SignupPasswordScreen> createState() => _SignupPwdScreen();
+  State<SignupPasswordScreen> createState() => _SignupPwdScreenState();
 }
 
-class _SignupPwdScreen extends State<SignupPasswordScreen> {
+class _SignupPwdScreenState extends State<SignupPasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isButtonEnabled = false;
   bool isChecked = false;
@@ -117,7 +118,7 @@ class _SignupPwdScreen extends State<SignupPasswordScreen> {
     return ButtonWidget2(
       title: "다음",
       isValid: _isButtonEnabled,
-      nextScreen: null,
+      nextScreen: const SignupFinishScreen(),
     );
   }
 
