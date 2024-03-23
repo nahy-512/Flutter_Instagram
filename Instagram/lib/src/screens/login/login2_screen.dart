@@ -4,6 +4,7 @@ import 'package:instagram/src/widgets/login2/button_widget.dart';
 import 'package:instagram/src/widgets/login2/textfield_default_widget.dart';
 import 'package:instagram/src/widgets/login2/textfield_password_widget.dart';
 
+import '../../app.dart';
 import '../../widgets/image_data.dart';
 
 class LoginScreen2 extends StatefulWidget {
@@ -103,7 +104,12 @@ class _LoginScreenState extends State<LoginScreen2> {
   }
 
   Widget _loginButton() {
-    return ButtonWidget2(title: "로그인", isValid: _isButtonEnabled,);
+    return ButtonWidget2(
+      title: "로그인",
+      isValid: _isButtonEnabled,
+      nextScreen: const App(),
+      popPrev: true,
+    );
   }
 
   void _updateButtonState() {

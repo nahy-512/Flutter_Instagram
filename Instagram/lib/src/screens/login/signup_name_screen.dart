@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instagram/src/widgets/image_data.dart';
+import 'package:instagram/src/screens/login/signup_password_screen.dart';
 
 import '../../widgets/login2/button_widget.dart';
 import '../../widgets/login2/textfield_default_widget.dart';
@@ -82,7 +82,11 @@ class _SignupNameScreenState extends State<SignupNameScreen> {
   }
 
   Widget _nextButton() {
-    return ButtonWidget2(title: "다음", isValid: _isButtonEnabled,);
+    return ButtonWidget2(
+      title: "다음",
+      isValid: _isButtonEnabled,
+      nextScreen: const SignupPasswordScreen(),
+    );
   }
 
   void _updateButtonState() {
