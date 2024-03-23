@@ -7,7 +7,7 @@ class SignupFinishScreen extends StatefulWidget {
   final String name;
 
   const SignupFinishScreen({super.key,
-    this.name = 'cocoa__log',
+    this.name = 'nah25_01',
   });
 
   @override

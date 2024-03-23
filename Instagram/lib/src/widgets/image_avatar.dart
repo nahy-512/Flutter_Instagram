@@ -4,7 +4,8 @@ import 'package:instagram/src/widgets/image_data.dart';
 enum AvatarType {
   bottom(24, 0.5, 1),
   story(78, 2, 2.5),
-  feed(32, 1, 1.5);
+  feed(32, 1, 1.5),
+  profile(80, 2, 2.5);
 
   const AvatarType(this.imageWidth, this.interval, this.borderWidth);
   final double imageWidth; // 이미지 크기

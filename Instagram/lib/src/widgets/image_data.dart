@@ -61,4 +61,9 @@ class IconsPath {
   static String get chat => '$basePath/ic_chat.svg';
   static String get share => '$basePath/ic_share.svg';
   static String get save => '$basePath/ic_bookmark.svg';
+  // Profile
+  static String get burger => '$basePath/ic_burger.svg';
+  static String get friendRecommendOff => '$basePath/ic_friend_recommend.svg';
+  static String get friendRecommendOn => '$basePath/ic_friend_recommend_fill.svg';
+  static String get accountLock => '$basePath/ic_lock.svg';
 }
