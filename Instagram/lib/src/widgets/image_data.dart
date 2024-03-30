@@ -66,4 +66,6 @@ class IconsPath {
   static String get friendRecommendOff => '$basePath/ic_friend_recommend.svg';
   static String get friendRecommendOn => '$basePath/ic_friend_recommend_fill.svg';
   static String get accountLock => '$basePath/ic_lock.svg';
+  static String get post => '$basePath/ic_grid.svg';
+  static String get mention => '$basePath/ic_mention.svg';
 }

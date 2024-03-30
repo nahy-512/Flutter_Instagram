@@ -19,7 +19,8 @@ class ProfileScreen extends StatelessWidget {
         scrollDirection: Axis.vertical,
         slivers: [
           _appBar(),
-          _profileLayout()
+          _profileLayout(),
+          _tabLayout()
         ],
       ),
     );
@@ -96,7 +97,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buttonLayout() {
+  Widget _buttonLayout() { // 프로필 편집, 공유, 친구 추천
     return Container(
       height: 35,
       child: Row(
@@ -109,6 +110,58 @@ class ProfileScreen extends StatelessWidget {
           _recommendButtonWidget()
         ],
       ),
+    );
+  }
+
+  Widget _tabLayout() { // 게시물, 태그
+    return SliverToBoxAdapter(
+      child: DefaultTabController(
+        // 탭의 수 설정
+        length: 2,
+        child: Column(
+          children: [
+            //TODO: tabBar과 tabBarView 연결
+            _tabBar(),
+            // _tabBarView(),
+            // SizedBox(child: _tabBarView()),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _tabBar() {
+    return TabBar(
+      indicatorColor: Colors.black,
+      indicatorWeight: 1,
+      unselectedLabelColor: Colors.grey,
+      tabs: [
+        Tab(icon: SvgPicture.asset(IconsPath.post)),
+        Tab(icon: SvgPicture.asset(IconsPath.mention)),
+      ],
+    );
+  }
+
+  Widget _tabBarView() {
+    return TabBarView(
+      children: [
+        Container(
+          color: Colors.red,
+          alignment: Alignment.center,
+          child: const Text(
+            "Page 1",
+            style: TextStyle(fontSize: 40, color: Colors.black),
+          ),
+        ),
+        Container(
+          color: Colors.blue,
+          alignment: Alignment.center,
+          child: const Text(
+            "Page 2",
+            style: TextStyle(fontSize: 40, color: Colors.black),
+          ),
+        ),
+      ],
     );
   }
 
