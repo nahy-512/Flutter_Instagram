@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:instagram/src/widgets/image_data.dart';
 
@@ -5,12 +7,14 @@ class PasswordTextField2 extends StatefulWidget {
   final String hintText;
   final TextEditingController controller;
   final ValueChanged<String>? onChanged;
+  final bool showPwdButton;
 
 
   const PasswordTextField2({super.key,
     required this.controller,
     this.hintText = "비밀번호",
-    this.onChanged
+    this.onChanged,
+    this.showPwdButton = true
   });
 
   @override
@@ -44,12 +48,12 @@ class _PasswordTextFieldState extends State<PasswordTextField2> {
               color: Colors.black45,
               fontSize: 14,
           ),
-          suffixIcon: IconButton(
-          onPressed: onIconPressed,
+          suffixIcon: widget.showPwdButton ? IconButton(
+            onPressed: onIconPressed,
             icon: _passwordHide
                 ? ImageIcon(AssetImage(IconsPath.pwdOff), size: 20, color: Colors.black26)
                 : ImageIcon(AssetImage(IconsPath.pwdOn), size: 20, color: Colors.blueAccent)
-          ),
+            ) : null,
           enabledBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(6.0)),
             borderSide: BorderSide(width: 0.3, color: Colors.black12),
